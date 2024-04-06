@@ -9,17 +9,14 @@ class UI {
         this.elNextQuestion = document.querySelector("#nextQuestion");
         this.elStartContent = document.querySelector("#startContent");
         this.elStartBtn = document.querySelector("#startBtn");
-
-
-
-
-
     }
+
+ 
 
 
     createAnswer(answers) {
         const classList = "border rounded-[5px] border-[#a7a7a7] py-[9px] px-[12px] w-full text-left"
-         
+        this.elquizAnswers.innerHTML = '';
         Object.keys(answers).forEach(key => {
             this.elquizAnswers.innerHTML += `<button class="${classList}">
             <b class="font-bold">${key.toUpperCase()}.</b> ${answers[key]}
@@ -38,6 +35,8 @@ class UI {
         this.elCurrent.innerHTML = currentNumber;
         this.elTotalQuestion.innerHTML = total;
      }
+
+     
 }
 
 
