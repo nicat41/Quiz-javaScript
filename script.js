@@ -15,6 +15,7 @@ class Quiz {
     start() {
         ui. createQuiestionTitle(this.index +1, this.question.text)
         ui.createAnswer(this.question.answers)
+        ui.createCurrentAndTotal(this.index +1, this.questions.length)
     }
 
    

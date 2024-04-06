@@ -33,6 +33,11 @@ class UI {
         this.elQuizTitle.innerHTML =  `<b class="font-bold">${number}.</b> ${text}`
 
      }
+
+     createCurrentAndTotal(currentNumber, total) {
+        this.elCurrent.innerHTML = currentNumber;
+        this.elTotalQuestion.innerHTML = total;
+     }
 }
 
 
