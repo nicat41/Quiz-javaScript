@@ -1,3 +1,4 @@
+let  counter;
 class UI {
     constructor() {
         this.elQuizTitle = document.querySelector("#quizTitle");
@@ -9,11 +10,11 @@ class UI {
         this.elNextQuestion = document.querySelector("#nextQuestion");
         this.elStartContent = document.querySelector("#startContent");
         this.elStartBtn = document.querySelector("#startBtn");
+        this.elTimeLine = document.querySelector("#timeLine");
+
     }
 
  
-
-
     createAnswer(answers) {
         const classList = "border rounded-[5px] border-[#a7a7a7] py-[9px] px-[12px] w-full text-left"
 
@@ -25,9 +26,6 @@ class UI {
         })
 
     }
-
-
-
 
      createQuiestionTitle(number, text) {
         this.elQuizTitle.innerHTML =  `<b class="font-bold">${number}.</b> ${text}`
@@ -47,22 +45,23 @@ class UI {
             this.elNextQuestion.classList.add("hidden")
         }
      }
+
+     startTime(value) {
+       const  obj = this;
+         counter = setInterval(updateTime, 1000) 
+
+        function updateTime () {
+            obj.elTime.innerHTML = value
+          value--;
+
+          if(value < 0) {
+            obj.stopTIme()
+          }
+        }
+
+    }
+    stopTIme() {
+        clearInterval(counter)
+
+    }
 }
-
-
-
-
-
-
-
-
-// <button class="border bg-[#D4FFBA] rounded-[5px] border-[#a7a7a7] py-[9px] px-[12px] w-full text-left">
-// <b class="font-bold">a.</b> Lorem Ipsum has been the industry's
-// </button>
-// <button class="border bg-[#FFDEDE] rounded-[5px] border-[#a7a7a7] py-[9px] px-[12px] w-full text-left">
-// <b class="font-bold">a.</b> Lorem Ipsum has been the industry's
-// </button>
-
-
-
-

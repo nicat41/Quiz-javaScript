@@ -8,12 +8,14 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <body>
     <div class="w-[600px] mx-auto my-5 border-[#D3D3D3] border">
-        <div class="py-[12px] px-[15px] flex items-center justify-between  border-[#D3D3D3] border-b bg-[#F0F0F0]">
+        <div class="py-[12px] px-[15px] flex items-center justify-between  border-[#D3D3D3] border-b bg-[#F0F0F0] relative">
             <h3 class="font-bold text-[18px]">Quiz App</h3>
-
             <div class="bg-[#626262] px-[7px] py-[5px]  flex items-center space-x-[6px] rounded-[6px] text-white">
                 <span class="">Time:</span>
-                <span id="time" class="py-[3px] text-[14px] inline-flex px-[4px] bg-[#FFA722] rounded-[6px]">10</span>
+                <span id="time" class="py-[3px] text-[14px] inline-flex justify-center min-w-[25px] bg-[#FFA722] rounded-[6px]"></span>
+            </div>
+            <div class="absolute -bottom-[1.5px] left-0 right-0">
+            <div class="h-[3px] w-[0] bg-[#FFA722]" id="timeLine"></div>
             </div>
         </div>
 

@@ -13,7 +13,7 @@ class Quiz {
     }
 
     nextQuestion () {
-        if(this.questions.length > this.index+1) {
+        if(this.questions.length > this.index + 1) {
              this.index += 1;
              this.start()
              ui.toggleNextButton("hidden")
@@ -27,6 +27,7 @@ class Quiz {
         ui. createQuiestionTitle(this.index + 1, this.question.text)
         ui.createAnswer(this.question.answers)
         ui.createCurrentAndTotal(this.index +1, this.questions.length)
+        ui.startTime(10) 
     }
 
    
@@ -47,7 +48,10 @@ ui.elQuizAnswers.addEventListener("click", (e) => {
 
 
         ui.elQuizAnswers.classList.add("pointer-events-none");
+        if(quiz.index < quiz.questions.length -1)
         ui.toggleNextButton("show")
+        ui.stopTIme()
+
         if(corrent === value) {
             object.classList.add("bg-[#D4FFBA]")
         }
