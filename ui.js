@@ -1,4 +1,6 @@
+
 let  counter;
+let counterLine;
 class UI {
     constructor() {
         this.elQuizTitle = document.querySelector("#quizTitle");
@@ -67,18 +69,42 @@ class UI {
         function updateTime () {
             obj.elTime.innerHTML = value
           value--;
-
           if(value < 0) {
-            obj.stopTIme()
+            obj.stopTime()
             obj.correctAnswer(correct)
+            obj.disabledAnswer(true)
+            obj.toggleNextButton("show")
 
           }
 
         }
 
     }
-    stopTIme() {
+    stopTime() {
         clearInterval(counter)
-
     }
+
+    startTimeLine () {
+        const obj = this;
+        let lineWidth = 0;
+
+        counterLine = setInterval(time, 110)
+ 
+
+        function time() {
+
+            obj.elTimeLine.style.width = lineWidth + "%";
+            lineWidth ++;
+
+            if (lineWidth > 100) {
+                clearInterval(counterLine)
+
+            } 
+       
+        }
+    
+    }  
+       stopTimeLine() {
+       clearInterval(counterLine)
+        }
 }

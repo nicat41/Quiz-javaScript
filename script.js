@@ -1,4 +1,4 @@
-const ui = new UI();
+let ui = new UI()
 
 class Quiz {
     constructor (questions) {
@@ -23,11 +23,15 @@ class Quiz {
     }
 
     start() {
+        ui.stopTime()
+        ui.stopTimeLine()
         this.getQuestion()
         ui. createQuiestionTitle(this.index + 1, this.question.text)
         ui.createAnswer(this.question.answers)
         ui.createCurrentAndTotal(this.index +1, this.questions.length)
-        ui.startTime(5, this.question.correct) 
+        ui.startTime(10, this.question.correct) 
+        ui.startTimeLine()
+
     }
 
    
@@ -50,7 +54,10 @@ ui.elQuizAnswers.addEventListener("click", (e) => {
 
         if(quiz.index < quiz.questions.length -1)
         ui.toggleNextButton("show")
-        ui.stopTIme()
+
+
+        ui.stopTime()
+        ui.stopTimeLine()
 
         if(correct === value) {
             object.classList.add("bg-[#D4FFBA]")
