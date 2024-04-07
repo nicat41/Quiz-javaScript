@@ -46,7 +46,21 @@ class UI {
         }
      }
 
-     startTime(value) {
+     disabledAnswer (value) {
+        if(value) {
+        ui.elQuizAnswers.classList.add("pointer-events-none");
+        } 
+        else {
+        ui.elQuizAnswers.classList.remove("pointer-events-none");
+
+        }
+     }
+     correctAnswer (correct) {
+        this.elQuizAnswers.querySelector(`button[value="${correct}"]`).classList.add("bg-[#D4FFBA]")
+        
+     }
+
+     startTime(value, correct) {
        const  obj = this;
          counter = setInterval(updateTime, 1000) 
 
@@ -56,7 +70,10 @@ class UI {
 
           if(value < 0) {
             obj.stopTIme()
+            obj.correctAnswer(correct)
+
           }
+
         }
 
     }

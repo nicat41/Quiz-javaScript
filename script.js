@@ -17,7 +17,7 @@ class Quiz {
              this.index += 1;
              this.start()
              ui.toggleNextButton("hidden")
-        ui.elQuizAnswers.classList.remove("pointer-events-none");
+             ui.disabledAnswer(false)
 
         }
     }
@@ -27,7 +27,7 @@ class Quiz {
         ui. createQuiestionTitle(this.index + 1, this.question.text)
         ui.createAnswer(this.question.answers)
         ui.createCurrentAndTotal(this.index +1, this.questions.length)
-        ui.startTime(10) 
+        ui.startTime(5, this.question.correct) 
     }
 
    
@@ -44,20 +44,20 @@ ui.elQuizAnswers.addEventListener("click", (e) => {
     const object = e.target;
     if(object.matches("button")) {
         const value = object.value;
-        let corrent = quiz.question.correct;
+        let correct = quiz.question.correct;
 
+        ui.disabledAnswer(true)
 
-        ui.elQuizAnswers.classList.add("pointer-events-none");
         if(quiz.index < quiz.questions.length -1)
         ui.toggleNextButton("show")
         ui.stopTIme()
 
-        if(corrent === value) {
+        if(correct === value) {
             object.classList.add("bg-[#D4FFBA]")
         }
         else {
             object.classList.add("bg-[#FFDEDE]")
-            ui.elQuizAnswers.querySelector(`button[value="${corrent}"]`).classList.add("bg-[#D4FFBA]")
+            ui.correctAnswer(correct)
     } 
 }
 })
