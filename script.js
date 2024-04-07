@@ -16,6 +16,9 @@ class Quiz {
         if(this.questions.length > this.index+1) {
              this.index += 1;
              this.start()
+             ui.toggleNextButton("hidden")
+        ui.elQuizAnswers.classList.remove("pointer-events-none");
+
         }
     }
 
@@ -34,6 +37,25 @@ const quiz = new Quiz(questions)
 
 ui.elNextQuestion.addEventListener("click", () => {
     quiz.nextQuestion()
+})
+
+ui.elQuizAnswers.addEventListener("click", (e) => {
+    const object = e.target;
+    if(object.matches("button")) {
+        const value = object.value;
+        let corrent = quiz.question.correct;
+
+
+        ui.elQuizAnswers.classList.add("pointer-events-none");
+        ui.toggleNextButton("show")
+        if(corrent === value) {
+            object.classList.add("bg-[#D4FFBA]")
+        }
+        else {
+            object.classList.add("bg-[#FFDEDE]")
+            ui.elQuizAnswers.querySelector(`button[value="${corrent}"]`).classList.add("bg-[#D4FFBA]")
+    } 
+}
 })
 
 

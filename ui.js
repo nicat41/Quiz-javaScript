@@ -2,7 +2,7 @@ class UI {
     constructor() {
         this.elQuizTitle = document.querySelector("#quizTitle");
         this.elTime = document.querySelector("#time");
-        this.elquizAnswers = document.querySelector("#quizAnswers");
+        this.elQuizAnswers = document.querySelector("#quizAnswers");
         this.elQuizTitle = document.querySelector("#quizTitle");
         this.elCurrent = document.querySelector("#current");
         this.elTotalQuestion = document.querySelector("#totalQuestion");
@@ -16,13 +16,16 @@ class UI {
 
     createAnswer(answers) {
         const classList = "border rounded-[5px] border-[#a7a7a7] py-[9px] px-[12px] w-full text-left"
-        this.elquizAnswers.innerHTML = '';
+
+        this.elQuizAnswers.innerHTML = '';
         Object.keys(answers).forEach(key => {
-            this.elquizAnswers.innerHTML += `<button class="${classList}">
+            this.elQuizAnswers.innerHTML += `<button class="${classList}" value="${key}">
             <b class="font-bold">${key.toUpperCase()}.</b> ${answers[key]}
             </button>`
         })
+
     }
+
 
 
 
@@ -36,7 +39,14 @@ class UI {
         this.elTotalQuestion.innerHTML = total;
      }
 
-     
+     toggleNextButton (type) {
+        if(type === "show") {
+            this.elNextQuestion.classList.remove("hidden")
+        }
+        else {
+            this.elNextQuestion.classList.add("hidden")
+        }
+     }
 }
 
 
