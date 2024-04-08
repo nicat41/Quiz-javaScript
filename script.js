@@ -1,5 +1,10 @@
 let ui = new UI()
 
+let correctAnswerTotal = 0;
+let wrongAnswerTotal = 0;
+let notAnswerTotal = 0;
+
+
 class Quiz {
     constructor (questions) {
         this.index = 0;
@@ -29,8 +34,14 @@ class Quiz {
         ui. createQuiestionTitle(this.index + 1, this.question.text)
         ui.createAnswer(this.question.answers)
         ui.createCurrentAndTotal(this.index +1, this.questions.length)
-        ui.startTime(10, this.question.correct) 
+        ui.startTime(10, this.question.correct, () => {
+          notAnswerTotal +=1;
+         const isCorrect = quiz.index < quiz.questions.length -1;
+         ui.quizFinished(isCorrect, correctAnswerTotal, wrongAnswerTotal, notAnswerTotal)
+
+        }) 
         ui.startTimeLine()
+
 
     }
 
@@ -52,20 +63,25 @@ ui.elQuizAnswers.addEventListener("click", (e) => {
 
         ui.disabledAnswer(true)
 
-        if(quiz.index < quiz.questions.length -1)
-        ui.toggleNextButton("show")
 
+           
 
         ui.stopTime()
         ui.stopTimeLine()
 
         if(correct === value) {
-            object.classList.add("bg-[#D4FFBA]")
+            object.classList.add("bg-[#D4FFBA]");
+            correctAnswerTotal += 1;
         }
         else {
             object.classList.add("bg-[#FFDEDE]")
             ui.correctAnswer(correct)
+            wrongAnswerTotal += 1;
     } 
+
+    const isCorrect = quiz.index < quiz.questions.length -1;
+
+        ui.quizFinished(isCorrect, correctAnswerTotal, wrongAnswerTotal, notAnswerTotal)
 }
 })
 

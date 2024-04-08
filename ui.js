@@ -13,6 +13,12 @@ class UI {
         this.elStartContent = document.querySelector("#startContent");
         this.elStartBtn = document.querySelector("#startBtn");
         this.elTimeLine = document.querySelector("#timeLine");
+        this.elFinishContent = document.querySelector("#finishContent");
+        this.elCorrectAnswerTotal = document.querySelector("#correctAnswerTotal");
+        this.elWrongAnswerTotal = document.querySelector("#wrongAnswerTotal");
+        this.elNotAnswerTotal = document.querySelector("#notAnswerTotal");
+
+
 
     }
 
@@ -62,7 +68,7 @@ class UI {
         
      }
 
-     startTime(value, correct) {
+     startTime(value, correct, callback) {
        const  obj = this;
          counter = setInterval(updateTime, 1000) 
 
@@ -74,7 +80,7 @@ class UI {
             obj.correctAnswer(correct)
             obj.disabledAnswer(true)
             obj.toggleNextButton("show")
-
+            callback()
           }
 
         }
@@ -111,5 +117,17 @@ class UI {
 
         StartContent () {
             this.elStartContent.classList.add("hidden")
+        }
+        quizFinished (value, correctAnswerTotal, wrongAnswerTotal, notAnswerTotal) {
+        if(value) {
+            this.toggleNextButton("show")
+        }  else  {
+            this.elFinishContent.classList.remove("hidden")
+            this.elCorrectAnswerTotal.innerHTML = correctAnswerTotal;
+            this.elWrongAnswerTotal.innerHTML = wrongAnswerTotal;
+            this.elNotAnswerTotal.innerHTML = notAnswerTotal;
+
+        }
+
         }
 }
