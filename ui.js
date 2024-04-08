@@ -107,4 +107,9 @@ class UI {
        stopTimeLine() {
        clearInterval(counterLine)
         }
+
+
+        StartContent () {
+            this.elStartContent.classList.add("hidden")
+        }
 }

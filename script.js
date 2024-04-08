@@ -70,6 +70,10 @@ ui.elQuizAnswers.addEventListener("click", (e) => {
 })
 
 
+ui.elStartBtn.addEventListener("click", () => {
+    ui.StartContent()
+    quiz.start()
 
-quiz.start()
+})
+
 
